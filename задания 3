@@ -1,0 +1,24 @@
+const students = [
+  { name: 'Anna', grade: 5 },
+  { name: 'Ivan', grade: 4 },
+  { name: 'Anna', grade: 5 },
+  { name: 'Petr', grade: 3 },
+  { name: 'Olga', grade: 4 },
+  { name: 'Ivan', grade: 4 }
+];
+
+const uniqueStudents = [...new Set(students.map(s => JSON.stringify(s)))]
+  .map(str => JSON.parse(str));
+console.log(uniqueStudents);
+
+const gradeMap = new Map();
+students.forEach(s => {
+  if (!gradeMap.has(s.grade)) gradeMap.set(s.grade, );
+  gradeMap.get(s.grade).push(s.name);
+});
+
+gradeMap.forEach((names, grade) => {
+  console.log(`Оценка ${grade}: ${names.join(', ')}`);
+});
+
+console.log([...gradeMap.keys()]);
