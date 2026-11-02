@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Практика №2 — Задание 4</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <p id="message" class="text">Изучаем JavaScript</p>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+.text {
+  color: black;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+
+const message = document.getElementById('message');
+
+message.classList.add('active');
+message.classList.remove('text');
