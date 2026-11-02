@@ -23,3 +23,21 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
+
+
+const mainTitle = document.getElementById('main-title');
+console.log(mainTitle);
+
+const paragraphs = document.getElementsByTagName('p');
+console.log(paragraphs);
+
+const descriptions = document.getElementsByClassName('description');
+console.log(descriptions);
+
+const container = document.querySelector('#container');
+console.log(container);
+
+const listItems = document.querySelectorAll('ul li');
+console.log(listItems);
