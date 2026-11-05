@@ -1,0 +1,30 @@
+
+const student1 = {
+  name: "Иван",
+  group: "А-1"
+};
+
+const student2 = {
+  name: "Мария",
+  group: "Б-3"
+};
+
+
+function showInfo() {
+  console.log(`Имя: ${this.name}, Группа: ${this.group}`);
+}
+
+
+student1.showInfo = showInfo;
+student2.showInfo = showInfo;
+
+
+console.log("Вызовы методов:");
+student1.showInfo(); 
+student2.showInfo(); 
+
+
+let savedShowInfo = student1.showInfo;
+
+console.log("\nВызов сохраненной функции без привязки контекста:");
+savedShowInfo(); 
