@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Удаление элемента</title>
+  </head>
+  <body>
+    <p id="paragraph">Это абзац, который можно удалить.</p>
+    <button id="delete">Удалить элемент</button>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+let paragraph = document.querySelector("#paragraph");
+let deleteButton = document.querySelector("#delete");
+deleteButton.addEventListener("click", function() {
+  paragraph.remove();
+});
