@@ -1,0 +1,8 @@
+const title = document.getElementById('title');
+const description = document.getElementById('description');
+const button = document.getElementById('change');
+
+button.addEventListener('click', () => {
+  title.textContent = 'Добро пожаловать!';
+  description.textContent = 'Мы изучаем JavaScript и DOM';
+});
