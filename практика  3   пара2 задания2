@@ -1,0 +1,11 @@
+const product = { name: 'Ноутбук', price: 1000 };
+
+function showProduct(discount, city) {
+  const finalPrice = this.price - this.price * discount / 100;
+  console.log(`Товар: \${this.name}`);
+  console.log(`Цена со скидкой ${discount}%: ${finalPrice} руб.`);
+  console.log(`Город: \${city}`);
+}
+
+showProduct.call(product, 10, 'Москва');
+showProduct.apply(product, [15, 'Казань']);
