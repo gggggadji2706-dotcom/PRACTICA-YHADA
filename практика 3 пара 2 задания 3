@@ -1,0 +1,23 @@
+const employee = {
+  name: 'Дмитрий',
+  position: 'Веб-разработчик',
+  showInfo() {
+    console.log(this.name, this.position);
+  }
+};
+
+employee.showInfo();
+
+const info = employee.showInfo;
+info();
+
+const boundInfo = employee.showInfo.bind(employee);
+boundInfo();
+
+const employee2 = {
+  name: 'Анна',
+  position: 'Дизайнер'
+};
+
+const boundInfo2 = employee.showInfo.bind(employee2);
+boundInfo2();
