@@ -1,0 +1,4 @@
+<h1 id="title">Старый заголовок</h1>
+<p id="description">Старое описание</p>
+<button id="change">Изменить текст</button>
+<script src="script.js"></script>
