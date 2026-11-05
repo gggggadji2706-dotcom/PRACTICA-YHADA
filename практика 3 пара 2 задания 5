@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашнее задание — Карточка сотрудника</title>
+</head>
+<body>
+
+    <button id="action-btn">Нажми меня</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+const employee = {
+    name: 'Иван',
+    position: 'Frontend Developer',
+    department: 'IT',
+    showCard: function() {
+        console.log(`Сотрудник: ${this.name}, Должность: ${this.position}, Отдел: ${this.department}`);
+    }
+};
+
+console.log('1. Вызов как метод объекта:');
+employee.showCard();
+
+console.log('\n2. Сохранение в переменную и вызов:');
+const detachedMethod = employee.showCard;
+detachedMethod();
+
+console.log('\n3. Исправление через bind():');
+const boundMethod = employee.showCard.bind(employee);
+boundMethod();
+
+console.log('\n4. call() и apply():');
+function showCardInCity(city) {
+    console.log(`Город: ${city}, Сотрудник: ${this.name}, Должность: ${this.position}, Отдел: ${this.department}`);
+}
+showCardInCity.call(employee, 'Москва');
+showCardInCity.apply(employee, ['Санкт-Петербург']);
+
+console.log('\n5. Обработчики событий:');
+const btn = document.getElementById('action-btn');
+
+btn.addEventListener('click', function(event) {
+    console.log('Обычная функция - this:', this);
+    console.log('Обычная функция - event.currentTarget:', event.currentTarget);
+});
+
+btn.addEventListener('click', (event) => {
+    console.log('Стрелочная функция - this:', this);
+    console.log('Стрелочная функция - event.currentTarget:', event.currentTarget);
+});
