@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика. Задание 4</title>
+</head>
+<body>
+
+    <button id="regular">Обычная функция</button>
+    <button id="arrow">Стрелочная функция</button>
+
+    <script>
+        const regularBtn = document.getElementById('regular');
+        const arrowBtn = document.getElementById('arrow');
+
+        regularBtn.addEventListener('click', function(event) {
+            console.log('--- Обычная функция ---');
+            console.log('this:', this);
+            console.log('event.currentTarget:', event.currentTarget);
+        });
+
+        arrowBtn.addEventListener('click', (event) => {
+            console.log('--- Стрелочная функция ---');
+            console.log('this:', this);
+            console.log('event.currentTarget:', event.currentTarget);
+        });
+
+        function bindContext(element) {
+            element.addEventListener('click', function(event) {
+                console.log('Контекст привязан:', this, event.currentTarget);
+            }.bind(element));
+        }
+
+        bindContext(document.getElementById('arrow'));
+    </script>
+
+</body>
+</html>
