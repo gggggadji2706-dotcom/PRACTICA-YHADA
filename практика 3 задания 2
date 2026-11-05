@@ -1,0 +1,27 @@
+html
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Изменение оформления через DOM</title>
+  </head>
+  <body>
+    <h1 id="heading">Заголовок страницы</h1>
+    <button id="color">Изменить цвет текста</button>
+    <button id="background">Изменить фон страницы</button>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+javascript
+
+let heading = document.querySelector("#heading");
+
+document.querySelector("#color").addEventListener("click", function() {
+  heading.style.color = "red";
+});
+
+document.querySelector("#background").addEventListener("click", function() {
+  document.body.style.backgroundColor = "pink";
+});
