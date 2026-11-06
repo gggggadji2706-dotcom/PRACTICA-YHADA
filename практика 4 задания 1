@@ -1,0 +1,14 @@
+решения:
+
+Ключ current_condition — значение типа array.
+В массиве current_condition — 1 элемент.
+Ключ, отвечающий за температуру в °C — temp_C.
+В ключе weatherDesc лежит массив из 1 объекта со свойством value (текстовое описание погоды).
+Путь до значения температуры: current_condition.temp_C.
+Ответ:
+
+Тип current_condition: array;
+Кол‑во элементов: 1;
+Ключ температуры: temp_C;
+weatherDesc: массив с описанием погоды;
+Путь: current_condition.temp_C. 
