@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,15 +6,19 @@
 </head>
 <body>
   <button onclick="getWeather()">Получить погоду</button>
-  <script src="script.js"></script>
+  <script>
+    async function getWeather(){
+            try {
+                const response = await fetch('https://wttr.in/Moscow?format=j1');
+                const data = await response.json();
+                
+                console.log(data);
+            } catch (error) {
+                console.log('ЧЕРТ О НЕТ Кажется произошла ошибка.');
+            }
+        }
+
+        getWeather();
+  </script>
 </body>
 </html>
-
-
-// script.js
-function getWeather() {
-  fetch('https://wttr.in/Moscow?format=j1')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-}
