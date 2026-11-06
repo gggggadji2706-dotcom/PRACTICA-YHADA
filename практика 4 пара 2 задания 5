@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Promise.race Timeout</title>
+  </head>
+  <body>
+    <h1>Результаты запросов</h1>
+    <ul id="results"></ul>
+
+    <script>
+      const url = 'https://wttr.in/Moscow?format=j1';
+
+      function fetchWithTimeout(url, ms) {
+        return Promise.race([
+          fetch(url),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Таймаут')), ms)
+          )
+        ]);
+      }
+
+      async function run() {
+        const list = document.getElementById('results');
+
+        try {
+          const res = await fetchWithTimeout(url, 100);
+          const data = await res.json();
+          const li = document.createElement('li');
+          li.textContent = `ms=100: получены данные, температура ${data.current_condition[0].temp_C}°C`;
+          list.appendChild(li);
+        } catch (err) {
+          const li = document.createElement('li');
+          li.textContent = `ms=100: ошибка — ${err.message}`;
+          list.appendChild(li);
+        }
+
+        try {
+          const res = await fetchWithTimeout(url, 5000);
+          const data = await res.json();
+          const li = document.createElement('li');
+          li.textContent = `ms=5000: получены данные, температура ${data.current_condition[0].temp_C}°C`;
+          list.appendChild(li);
+        } catch (err) {
+          const li = document.createElement('li');
+          li.textContent = `ms=5000: ошибка — ${err.message}`;
+          list.appendChild(li);
+        }
+      }
+
+      run();
+    </script>
+  </body>
+</html>
