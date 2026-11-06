@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Promise.allSettled Demo</title>
+  </head>
+  <body>
+    <h1>Результаты запросов</h1>
+    <ul id="results"></ul>
+
+    <script>
+      const urls = [
+        'https://wttr.in/Moscow?format=j1',
+        'https://wttr.inn/Moscow?format=j1',
+        'https://wttr.in/London?format=j1'
+      ];
+
+      (async () => {
+        const results = await Promise.allSettled(
+          urls.map(url => fetch(url).then(res => res.json()))
+        );
+
+        const list = document.getElementById('results');
+        results.forEach((r, i) => {
+          const li = document.createElement('li');
+          if (r.status === 'fulfilled') {
+            li.textContent = `${urls[i]}: температура ${r.value.current_condition.temp_C}°C`;
+          } else {
+            li.textContent = `${urls[i]}: ошибка — ${r.reason.message}`;
+          }
+          list.appendChild(li);
+        });
+      })();
+    </script>
+  </body>
+</html>
