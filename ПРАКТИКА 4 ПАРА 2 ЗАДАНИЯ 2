@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Цепочка .then()</title>
+  </head>
+  <body>
+    <h1>Погода в Москве</h1>
+    <p id="weather"></p>
+
+    <script>
+      function getMoscowWeather() {
+        return fetch('https://wttr.in/Moscow?format=j1')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Ошибка запроса: ' + response.status);
+            }
+            return response.json();
+          })
+          .then(data => data.current_condition[0])
+          .then(condition => condition.temp_C)
+          .then(temp => {
+            const text = `Температура \${temp}°C`;
+            document.getElementById('weather').textContent = text;
+            console.log(text);
+          })
+          .catch(error => {
+            const text = 'Произошла ошибка: ' + error.message;
+            document.getElementById('weather').textContent = text;
+            console.log(text);
+          })
+          .finally(() => {
+            console.log('Запрос завершён');
+          });
+      }
+
+      getMoscowWeather();
+    </script>
+  </body>
+</html>
