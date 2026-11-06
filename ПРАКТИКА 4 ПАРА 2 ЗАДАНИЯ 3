@@ -1,0 +1,18 @@
+const urls = [
+  'https://wttr.in/Moscow?format=j1',
+  'https://wttr.in/London?format=j1',
+  'https://wttr.in/Paris?format=j1'
+];
+
+Promise.all(
+  urls.map(url => fetch(url).then(response => response.json()))
+)
+  .then(results => {
+    const [moscow, london, paris] = results;
+    console.log(`Москва: \${moscow.current_condition[0].temp_C}°C`);
+    console.log(`Лондон: \${london.current_condition[0].temp_C}°C`);
+    console.log(`Париж: \${paris.current_condition[0].temp_C}°C`);
+  })
+  .catch(error => {
+    console.log('Произошла ошибка:', error.message);
+  });
